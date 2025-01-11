@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../css/Signin.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { backendHost, protocol, mailHost } from '../../Global';
+import { backendHost, protocol } from '../../Global';
 
 const Signin = () => {
   const [email, setEmail] = useState('');

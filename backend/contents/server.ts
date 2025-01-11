@@ -1,5 +1,6 @@
 import { response } from "express";
 import { v4 as uuidv4 } from "uuid"
+import { protocol, frontendHost } from "../../frontend/src/Global"
 
 const express = require('express');
 const mysql = require('mysql2');
@@ -65,14 +66,36 @@ app.post("/account/signin", async(req: any, res: any) => {
   }
 });
 
+app.post("/account/signup", async(req: any, res: any) => {
+  const { email, username, password } = req.body;
+
+  try {
+    const token = uuidv4();
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const link = protocol + frontendHost + `/confirm?token=${token}`;
+
+    const mailOptions = {
+      from: mail,
+      to: email,
+      submit: 'メールアドレス確認',
+      text: `以下のリンクをクリックして本登録を完了してください：${link}`,
+      html: `<p>以下のリンクをクリックして本登録を完了してください：</p><a href="${link}">${link}</a>`
+    };
+    await transporter.sendMail(mailOptions);
+
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+    await connection.query(
+      'INSERT INTO pending_users (token, email, username, password, expires_date) VALUES (?, ?, ?, ?, ?)',
+      [token, email, username, hashedPassword, expiresAt]
+    )
+
+    res.json({ message: '確認メールが送信されました。'})
+  } catch (err) {
+    res.json({ message: 'エラーが発生しました。' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`port ${port} でサーバー起動中`);
 });
-
-app.post("/account/signup", async(req: any, res: any) => {
-  const { email, username, password } = req.body;
-  const token = uuidv4();
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
-})

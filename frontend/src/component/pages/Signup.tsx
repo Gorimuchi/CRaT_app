@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../css/Signup.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { backendHost, protocol, mailHost } from '../../Global';
+import { backendHost, protocol } from '../../Global';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,22 @@ const Signup = () => {
   };
   const URL = protocol + backendHost + "/account/signup"
 
-  const handleClick = async () => {
+  // const handleClick = async () => {
+  //   await fetch(`${URL}`, {
+  //     method: "POST",
+  //     mode: "cors",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setStatus(data));
+  // };
+
+  const handleSignin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     await fetch(`${URL}`, {
       method: "POST",
       mode: "cors",
@@ -30,10 +45,6 @@ const Signup = () => {
     })
       .then((response) => response.json())
       .then((data) => setStatus(data));
-  };
-
-  const handleSignin = async (e: React.FormEvent) => {
-    e.preventDefault();
     
     if (!email || !username || !password || !passwordconfirmation) {
       alert("すべてのフィールドに入力してください。");
@@ -48,7 +59,6 @@ const Signup = () => {
       console.log(status);
       if (status) {
         alert('メールアドレスに確認メールを送信しました。');
-        navigate('/login')
       }
       
     } catch (error) {
@@ -90,7 +100,7 @@ const Signup = () => {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <div>
-          <button type='submit' onClick={handleClick}>新規登録</button>
+          <button type='submit'>新規登録</button>
         </div>
       </form>
       <Link to="/signin">サインインの方はこちら</Link>
