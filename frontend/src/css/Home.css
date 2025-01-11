@@ -1,0 +1,268 @@
+.top_page {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.top_page img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  object-fit: fill;
+}
+.background_overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(67, 67, 67, 0.5); /* 透明なグレー */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home_title {
+  position: absolute;
+  z-index: 10;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+}
+.titlename {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  transition: 1s ease;
+  opacity: 0;
+}
+.titlename.active {
+  text-align: center;
+  font-size: 80px;
+  font-weight: 700;
+  opacity: 1;
+}
+.subtitle {
+  text-align: center;
+  font-size: 5px;
+  font-weight: 600;
+  color: white;
+  transition: 2s ease;
+  opacity: 0;
+}
+.subtitle.active {
+  text-align: center;
+  font-size: 15px;
+  opacity: 1;
+}
+.account_link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 17%;
+  height: 65%;
+  margin-top: 3.5%;
+  margin-right: 3%;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30px;
+  font-size: 15px;
+  color: gray;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+.account_link button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 4%;
+  width: 80%;
+  border-radius: 10px;
+  background-color: rgb(80, 80, 255);
+  border: none;
+  color: white;
+  box-shadow: 0px 2px 4px gray;
+  transition: 0.3s ease;
+}
+.account_link button:hover {
+  background-color: rgb(80, 80, 150);
+}
+
+.signin_form {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.login_form {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+.forget {
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.forget_link {
+  width: 90%;
+  text-decoration: none;
+  color: gray;
+  font-size: 12px;
+  transition: 0.2s;
+}
+.forget_link:hover {
+  color: rgb(255, 4, 4);
+}
+
+hr {
+  width: 97vw;
+}
+
+.right_page {
+  margin-left: 5%;
+  margin-right: 5%;
+} 
+
+.search {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  margin-top: 7px;
+}
+.searchbox {
+  margin-right: 100px;
+}
+.searchbox input {
+  width: 200px;
+  padding: 7px;
+  border-radius: 8px;
+  margin-top: 2px;
+  border: 1px solid rgb(110, 110, 110);
+}
+.searchbox button {
+  padding: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
+  text-align: center;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(79, 161, 255);
+  color: white;
+  transition: 0.3s ease;
+}
+.searchbox button:hover {
+  background-color: rgb(43, 94, 153);
+}
+
+.restriction {
+  gap: 15px;
+  display: flex;
+}
+.restriction select {
+  padding: 6px;
+  margin-top: 1px;
+  color: gray;
+  border-radius: 5px;
+}
+.restriction select:hover {
+  border: 1px solid black;
+}
+.restriction input {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  color: gray;
+}
+.restriction button {
+  padding: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(79, 161, 255);
+  color: white;
+  transition: 0.3s ease;
+}
+.restriction button:hover {
+  background-color: rgb(43, 94, 153);
+}
+
+.list_type select {
+  position: absolute;
+  right: 0;
+  padding: 6px;
+}
+
+.right_page hr {
+  margin-top: 12px;
+}
+
+.request_list ul{
+  display: flex;
+  gap: 20px;
+  margin: 0;
+}
+
+.request {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  flex-flow: column;
+  width: 240px;
+  height: 320px;
+  padding: 3px;
+  margin: 1px;
+  box-shadow: 1px 1px 4px gray;
+  transition: 0.3s;
+}
+.request:hover {
+  background-color: rgb(201, 201, 201);
+}
+.request:hover img{
+  filter:  brightness(0.9);
+}
+.request img {
+  width: 80%;
+  margin: 10px;
+  border: 1px solid gray;
+  transition: 0.3s;
+}
+.request_content {
+  width: 90%;
+  text-align: left;
+}
+.request_title {
+  font-weight: 600;
+  margin-left: 5%;
+}
+.request_reword {
+ text-align: right; 
+ margin-right: 10%;
+}
+.request_date {
+  display: flex;
+  font-size: 13px;
+  margin-top: 10px;
+  color: gray;
+  gap: 10px;
+}
+.create_request {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  padding: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: rgb(79, 161, 255);
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px gray;
+  transition: 0.3s;
+}
+.create_request:hover {
+  background-color: rgb(43, 94, 153);
+}
